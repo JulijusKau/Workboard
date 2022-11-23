@@ -3,10 +3,20 @@
   margin: 0;
 }
 
+/* =============================
+GENERAL
+============================= */
+
 /* Cia yra globalus kintamasis, kuri poto gali panaudot visur kitur ir tik ji pakeitus tau visur pasikeicia pagal ji*/
 :root {
   --background-color-main: rgb(186, 0, 0);
   --background-color-secondary: rgb(150, 57, 57);
+  --width-main: 70%;
+}
+
+html {
+  /* sitas property nurodo kad kai linkus spausi, tai labai graziai scrollins i tuos sectionus */
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -17,8 +27,12 @@ p {
   font-size: 1.5em;
 }
 
+/* =============================
+HEADER
+============================= */
+
 header {
-  height: 50px;
+  height: 70px;
   background-color: var(--background-color-main);
   display: flex;
   justify-content: space-between;
@@ -27,6 +41,7 @@ header {
 
 header img {
   max-height: 100%;
+  filter: invert(80%);
 }
 
 #menu-links {
@@ -38,7 +53,12 @@ header img {
 #menu-links a {
   text-decoration: none;
   color: white;
+  font-size: 1.5em;
 }
+
+/* =============================
+ABOUT
+============================= */
 
 #section-about {
   height: 600px;
@@ -52,15 +72,103 @@ header img {
 
 #section-about p,
 #section-about h1 {
-  width: 80%;
+  width: var(--width-main);
 }
+
+/* =============================
+GALLERY
+============================= */
 
 #section-gallery {
-  height: 1000px;
   background-color: var(--background-color-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  row-gap: 40px;
 }
 
-#section-contact {
-  height: 500px;
+.gallery-card {
   background-color: var(--background-color-secondary);
+  border: green 2px solid;
+  width: var(--width-main);
+  border-radius: 5%;
+}
+
+/* ateity kai darysi websites tai geriausia kad images butu tokios pat rezolucijos. graziau atrodys, geriau dirbt ir t.t. */
+
+.gallery-card img {
+  width: 100%;
+  border-radius: 5% 5% 0 0;
+  filter: grayscale(100%);
+}
+
+.gallery-card h2 {
+  text-align: center;
+  margin: 5% 0;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1499px) {
+  #section-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 10%;
+    gap: 5%;
+    background-color: aquamarine;
+  }
+
+  .gallery-card {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  #section-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =============================
+CONTACT
+============================= */
+
+#section-contact {
+  background-color: var(--background-color-secondary);
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#section-contact form {
+  width: var(--width-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+#section-contact input {
+  height: 50px;
+  font-size: 1.5em;
+  border: none;
+  width: 100%;
+}
+
+#section-contact textarea {
+  resize: none;
+  border: none;
+  font-size: 1.5em;
+  height: 250px;
+  width: 100%;
+}
+
+#section-contact button {
+  border: none;
+  font-size: 1.5em;
+  width: 50%;
+  height: 50px;
+  border-radius: 5px;
+  background-color: peachpuff;
+  text-align: center;
 }
